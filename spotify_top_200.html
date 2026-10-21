@@ -1,0 +1,8068 @@
+
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+
+    <title>
+        Spotify Top 200 Indonesia
+    </title>
+
+
+    <!-- =================================================
+         BOOTSTRAP 5 CDN
+         ================================================= -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =================================================
+         CHART.JS
+         ================================================= -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+
+
+    <!-- =================================================
+         CUSTOM CSS
+         ================================================= -->
+
+    <style>
+
+
+        /* =================================================
+           BODY
+           ================================================= */
+
+        body {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #071e34,
+                    #063b5c,
+                    #0b5d72
+                );
+
+            min-height: 100vh;
+
+            color: white;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+        }
+
+
+        /* =================================================
+           CONTAINER
+           ================================================= */
+
+        .main-container {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+        }
+
+
+        /* =================================================
+           HERO
+           ================================================= */
+
+        .hero {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+
+            border-radius: 25px;
+
+            padding: 45px;
+
+            margin-bottom: 30px;
+
+            backdrop-filter:
+                blur(10px);
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 180px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0, 255, 200, 0.15);
+
+            right: -50px;
+
+            top: -60px;
+
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+
+            height: 120px;
+
+            transform:
+                rotate(45deg);
+
+            background:
+                rgba(0, 180, 255, 0.12);
+
+            left: -40px;
+
+            bottom: -50px;
+
+        }
+
+
+        .hero h1 {
+
+            font-size: 42px;
+
+            font-weight: 800;
+
+        }
+
+
+        .hero p {
+
+            color: #b9d8e8;
+
+        }
+
+
+        /* =================================================
+           STATISTIC CARD
+           ================================================= */
+
+        .stat-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            min-height: 140px;
+
+        }
+
+
+        .stat-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 70px;
+
+            height: 70px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0,255,200,0.12);
+
+            right: -20px;
+
+            bottom: -20px;
+
+        }
+
+
+        .stat-number {
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+        }
+
+
+        .stat-label {
+
+            color: #a9c9d8;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =================================================
+           CHART CARD
+           ================================================= */
+
+        .chart-card {
+
+            background:
+                rgba(255,255,255,0.96);
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            margin-top: 30px;
+
+            color: #102a43;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.18);
+
+        }
+
+
+        .chart-title {
+
+            font-weight: 800;
+
+            font-size: 22px;
+
+        }
+
+
+        .chart-description {
+
+            color: #607d8b;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .chart-wrapper {
+
+            height: 500px;
+
+        }
+
+
+        /* =================================================
+           TABLE CARD
+           ================================================= */
+
+        .table-card {
+
+            background:
+                rgba(255,255,255,0.96);
+
+            color: #102a43;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            margin-top: 30px;
+
+        }
+
+
+        .table-responsive {
+
+            border-radius: 15px;
+
+        }
+
+
+        .section-title {
+
+            font-weight: 800;
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container-fluid py-5">
+
+
+<div class="main-container">
+
+
+    <!-- =================================================
+         HERO / HEADER
+         ================================================= -->
+
+    <div class="hero">
+
+        <h1>
+            Spotify Top 200 Indonesia
+        </h1>
+
+        <p class="lead mb-0">
+
+            Weekly Chart Analytics —
+            analisis performa lagu berdasarkan
+            streams dan total streams.
+
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         STATISTIC CARDS
+         ================================================= -->
+
+    <div class="row g-4">
+
+
+        <!-- TOTAL LAGU -->
+
+        <div class="col-md-4">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    TOTAL LAGU
+                </div>
+
+                <div class="stat-number">
+                    200
+                </div>
+
+                <div class="stat-label">
+                    Lagu dalam chart
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOP STREAMS -->
+
+        <div class="col-md-4">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    #1 STREAMS
+                </div>
+
+                <div class="stat-number">
+
+                    9,424,082
+
+                </div>
+
+                <div class="stat-label">
+
+                    Sesi Potret
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOP TOTAL STREAMS -->
+
+        <div class="col-md-4">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    #1 TOTAL STREAMS
+                </div>
+
+                <div class="stat-number">
+
+                    828,816,370
+
+                </div>
+
+                <div class="stat-label">
+
+                    Serana
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         CHART 1
+         ================================================= -->
+
+    <div class="chart-card">
+
+        <div class="chart-title">
+
+            Top 10 Lagu Berdasarkan Streams
+
+        </div>
+
+
+        <div class="chart-description">
+
+            Perbandingan jumlah streams mingguan
+            dari 10 lagu dengan performa tertinggi.
+
+        </div>
+
+
+        <div class="chart-wrapper">
+
+            <canvas
+                id="streamsChart">
+            </canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CHART 2
+         ================================================= -->
+
+    <div class="chart-card">
+
+        <div class="chart-title">
+
+            Top 10 Lagu Berdasarkan Total Streams
+
+        </div>
+
+
+        <div class="chart-description">
+
+            Perbandingan total streams yang telah
+            dikumpulkan selama berada di chart.
+
+        </div>
+
+
+        <div class="chart-wrapper">
+
+            <canvas
+                id="totalStreamsChart">
+            </canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TABEL TOP 200
+         ================================================= -->
+
+    <div class="table-card">
+
+
+        <h2 class="section-title mb-4">
+
+            Spotify Top 200
+
+        </h2>
+
+
+        <div class="table-responsive">
+
+
+            <table
+                class="
+                    table
+                    table-striped
+                    table-hover
+                    align-middle
+                "
+            >
+
+
+                <thead
+                    class="table-dark"
+                >
+
+                    <tr>
+
+                        <th>Rank</th>
+
+                        <th>Song</th>
+
+                        <th>Artist</th>
+
+                        <th>Streams</th>
+
+                        <th>Peak</th>
+
+                        <th>Weeks</th>
+
+                        <th>Total Streams</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    
+
+        <tr>
+
+            <td>
+                <strong>
+                    1
+                </strong>
+            </td>
+
+            <td>
+                Sesi Potret
+            </td>
+
+            <td>
+                eńau, Ari Lesmana
+            </td>
+
+            <td>
+                9,424,082
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                34
+            </td>
+
+            <td>
+                319,474,244
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    2
+                </strong>
+            </td>
+
+            <td>
+                Dunia Yang Nanti
+            </td>
+
+            <td>
+                Raim Laode
+            </td>
+
+            <td>
+                8,547,932
+            </td>
+
+            <td>
+                2
+            </td>
+
+            <td>
+                22
+            </td>
+
+            <td>
+                155,033,488
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    3
+                </strong>
+            </td>
+
+            <td>
+                Teh Hijau
+            </td>
+
+            <td>
+                Tulus
+            </td>
+
+            <td>
+                7,712,801
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                16
+            </td>
+
+            <td>
+                167,084,149
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    4
+                </strong>
+            </td>
+
+            <td>
+                Iqro'
+            </td>
+
+            <td>
+                Raim Laode
+            </td>
+
+            <td>
+                7,602,474
+            </td>
+
+            <td>
+                2
+            </td>
+
+            <td>
+                32
+            </td>
+
+            <td>
+                214,931,220
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    5
+                </strong>
+            </td>
+
+            <td>
+                Titik Nadir
+            </td>
+
+            <td>
+                Kahitna, Monita Tahalea
+            </td>
+
+            <td>
+                5,519,507
+            </td>
+
+            <td>
+                5
+            </td>
+
+            <td>
+                55
+            </td>
+
+            <td>
+                171,642,311
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    6
+                </strong>
+            </td>
+
+            <td>
+                Ini Abadi
+            </td>
+
+            <td>
+                Perunggu
+            </td>
+
+            <td>
+                5,417,652
+            </td>
+
+            <td>
+                5
+            </td>
+
+            <td>
+                37
+            </td>
+
+            <td>
+                167,389,067
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    7
+                </strong>
+            </td>
+
+            <td>
+                Terbelah Jadi Dua
+            </td>
+
+            <td>
+                Gloria Jessica, Ade Govinda
+            </td>
+
+            <td>
+                5,202,433
+            </td>
+
+            <td>
+                7
+            </td>
+
+            <td>
+                9
+            </td>
+
+            <td>
+                26,992,085
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    8
+                </strong>
+            </td>
+
+            <td>
+                Jatuh Suka
+            </td>
+
+            <td>
+                Tulus
+            </td>
+
+            <td>
+                5,178,068
+            </td>
+
+            <td>
+                5
+            </td>
+
+            <td>
+                69
+            </td>
+
+            <td>
+                164,362,080
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    9
+                </strong>
+            </td>
+
+            <td>
+                Kita Lewati Berdua
+            </td>
+
+            <td>
+                Overnight
+            </td>
+
+            <td>
+                5,017,796
+            </td>
+
+            <td>
+                5
+            </td>
+
+            <td>
+                10
+            </td>
+
+            <td>
+                46,189,438
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    10
+                </strong>
+            </td>
+
+            <td>
+                Bersenja Gurau
+            </td>
+
+            <td>
+                Raim Laode
+            </td>
+
+            <td>
+                5,011,199
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                47
+            </td>
+
+            <td>
+                270,252,782
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    11
+                </strong>
+            </td>
+
+            <td>
+                Jangan Paksa Rindu - Beda
+            </td>
+
+            <td>
+                Ifan Seventeen
+            </td>
+
+            <td>
+                4,847,781
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                38
+            </td>
+
+            <td>
+                239,455,881
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    12
+                </strong>
+            </td>
+
+            <td>
+                Bahagia Lagi
+            </td>
+
+            <td>
+                Piche Kota
+            </td>
+
+            <td>
+                4,763,666
+            </td>
+
+            <td>
+                2
+            </td>
+
+            <td>
+                42
+            </td>
+
+            <td>
+                278,599,643
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    13
+                </strong>
+            </td>
+
+            <td>
+                kota ini tak sama tanpamu
+            </td>
+
+            <td>
+                Nadhif Basalamah
+            </td>
+
+            <td>
+                4,743,088
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                46
+            </td>
+
+            <td>
+                344,211,505
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    14
+                </strong>
+            </td>
+
+            <td>
+                bergema sampai selamanya
+            </td>
+
+            <td>
+                Nadhif Basalamah
+            </td>
+
+            <td>
+                4,625,283
+            </td>
+
+            <td>
+                2
+            </td>
+
+            <td>
+                82
+            </td>
+
+            <td>
+                503,505,362
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    15
+                </strong>
+            </td>
+
+            <td>
+                everything u are
+            </td>
+
+            <td>
+                Hindia
+            </td>
+
+            <td>
+                4,593,208
+            </td>
+
+            <td>
+                2
+            </td>
+
+            <td>
+                84
+            </td>
+
+            <td>
+                493,908,924
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    16
+                </strong>
+            </td>
+
+            <td>
+                Monolog
+            </td>
+
+            <td>
+                Pamungkas
+            </td>
+
+            <td>
+                4,554,117
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                342
+            </td>
+
+            <td>
+                723,971,063
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    17
+                </strong>
+            </td>
+
+            <td>
+                Lesung Pipi
+            </td>
+
+            <td>
+                Raim Laode
+            </td>
+
+            <td>
+                4,510,143
+            </td>
+
+            <td>
+                2
+            </td>
+
+            <td>
+                80
+            </td>
+
+            <td>
+                479,477,571
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    18
+                </strong>
+            </td>
+
+            <td>
+                The One That Got Away
+            </td>
+
+            <td>
+                Katy Perry
+            </td>
+
+            <td>
+                4,304,193
+            </td>
+
+            <td>
+                12
+            </td>
+
+            <td>
+                36
+            </td>
+
+            <td>
+                134,337,947
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    19
+                </strong>
+            </td>
+
+            <td>
+                Ada titik-titik di ujung doa
+            </td>
+
+            <td>
+                Sal Priadi
+            </td>
+
+            <td>
+                4,153,795
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                41
+            </td>
+
+            <td>
+                250,452,546
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    20
+                </strong>
+            </td>
+
+            <td>
+                Nina
+            </td>
+
+            <td>
+                .Feast
+            </td>
+
+            <td>
+                4,085,959
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                112
+            </td>
+
+            <td>
+                593,269,035
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    21
+                </strong>
+            </td>
+
+            <td>
+                Menari-nari
+            </td>
+
+            <td>
+                Raim Laode
+            </td>
+
+            <td>
+                4,078,075
+            </td>
+
+            <td>
+                15
+            </td>
+
+            <td>
+                20
+            </td>
+
+            <td>
+                58,250,034
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    22
+                </strong>
+            </td>
+
+            <td>
+                33x
+            </td>
+
+            <td>
+                Perunggu
+            </td>
+
+            <td>
+                4,073,497
+            </td>
+
+            <td>
+                14
+            </td>
+
+            <td>
+                60
+            </td>
+
+            <td>
+                223,291,409
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    23
+                </strong>
+            </td>
+
+            <td>
+                Monokrom
+            </td>
+
+            <td>
+                Tulus
+            </td>
+
+            <td>
+                3,669,446
+            </td>
+
+            <td>
+                12
+            </td>
+
+            <td>
+                517
+            </td>
+
+            <td>
+                709,907,335
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    24
+                </strong>
+            </td>
+
+            <td>
+                Mangu
+            </td>
+
+            <td>
+                Fourtwnty, Charita Utami
+            </td>
+
+            <td>
+                3,605,848
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                87
+            </td>
+
+            <td>
+                505,123,706
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    25
+                </strong>
+            </td>
+
+            <td>
+                About You
+            </td>
+
+            <td>
+                The 1975
+            </td>
+
+            <td>
+                3,559,046
+            </td>
+
+            <td>
+                22
+            </td>
+
+            <td>
+                201
+            </td>
+
+            <td>
+                421,312,277
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    26
+                </strong>
+            </td>
+
+            <td>
+                Selamat (Selamat Tinggal)
+            </td>
+
+            <td>
+                Virgoun, Audy
+            </td>
+
+            <td>
+                3,531,655
+            </td>
+
+            <td>
+                12
+            </td>
+
+            <td>
+                378
+            </td>
+
+            <td>
+                693,750,029
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    27
+                </strong>
+            </td>
+
+            <td>
+                Tarot
+            </td>
+
+            <td>
+                .Feast
+            </td>
+
+            <td>
+                3,473,076
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                93
+            </td>
+
+            <td>
+                417,482,633
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    28
+                </strong>
+            </td>
+
+            <td>
+                Komang
+            </td>
+
+            <td>
+                Raim Laode
+            </td>
+
+            <td>
+                3,472,811
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                192
+            </td>
+
+            <td>
+                706,227,964
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    29
+                </strong>
+            </td>
+
+            <td>
+                Separuh Aku
+            </td>
+
+            <td>
+                Noah
+            </td>
+
+            <td>
+                3,453,666
+            </td>
+
+            <td>
+                27
+            </td>
+
+            <td>
+                167
+            </td>
+
+            <td>
+                257,416,704
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    30
+                </strong>
+            </td>
+
+            <td>
+                Serana
+            </td>
+
+            <td>
+                For Revenge
+            </td>
+
+            <td>
+                3,369,421
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                231
+            </td>
+
+            <td>
+                828,816,370
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    31
+                </strong>
+            </td>
+
+            <td>
+                penjaga hati
+            </td>
+
+            <td>
+                Nadhif Basalamah
+            </td>
+
+            <td>
+                3,299,087
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                158
+            </td>
+
+            <td>
+                620,643,458
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    32
+                </strong>
+            </td>
+
+            <td>
+                Dinda
+            </td>
+
+            <td>
+                MASDO
+            </td>
+
+            <td>
+                3,290,743
+            </td>
+
+            <td>
+                31
+            </td>
+
+            <td>
+                21
+            </td>
+
+            <td>
+                16,132,022
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    33
+                </strong>
+            </td>
+
+            <td>
+                Merry Christmas, Please Don't Call
+            </td>
+
+            <td>
+                Bleachers
+            </td>
+
+            <td>
+                3,283,015
+            </td>
+
+            <td>
+                33
+            </td>
+
+            <td>
+                16
+            </td>
+
+            <td>
+                37,285,760
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    34
+                </strong>
+            </td>
+
+            <td>
+                Soulmate
+            </td>
+
+            <td>
+                Kahitna
+            </td>
+
+            <td>
+                3,273,634
+            </td>
+
+            <td>
+                13
+            </td>
+
+            <td>
+                151
+            </td>
+
+            <td>
+                242,206,446
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    35
+                </strong>
+            </td>
+
+            <td>
+                Terpukau
+            </td>
+
+            <td>
+                Astrid
+            </td>
+
+            <td>
+                3,251,379
+            </td>
+
+            <td>
+                13
+            </td>
+
+            <td>
+                27
+            </td>
+
+            <td>
+                90,011,724
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    36
+                </strong>
+            </td>
+
+            <td>
+                Berapa Kali Kita Akan Saling Memaafkan
+            </td>
+
+            <td>
+                Pamungkas
+            </td>
+
+            <td>
+                3,238,789
+            </td>
+
+            <td>
+                15
+            </td>
+
+            <td>
+                26
+            </td>
+
+            <td>
+                94,048,057
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    37
+                </strong>
+            </td>
+
+            <td>
+                Bertaut
+            </td>
+
+            <td>
+                Nadin Amizah
+            </td>
+
+            <td>
+                3,228,868
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                333
+            </td>
+
+            <td>
+                752,835,540
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    38
+                </strong>
+            </td>
+
+            <td>
+                Hati-Hati di Jalan
+            </td>
+
+            <td>
+                Tulus
+            </td>
+
+            <td>
+                3,222,520
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                241
+            </td>
+
+            <td>
+                567,966,742
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    39
+                </strong>
+            </td>
+
+            <td>
+                Treat You Better
+            </td>
+
+            <td>
+                Shawn Mendes
+            </td>
+
+            <td>
+                3,162,179
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                123
+            </td>
+
+            <td>
+                81,942,224
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    40
+                </strong>
+            </td>
+
+            <td>
+                Rumah Ke Rumah
+            </td>
+
+            <td>
+                Hindia
+            </td>
+
+            <td>
+                3,158,833
+            </td>
+
+            <td>
+                7
+            </td>
+
+            <td>
+                359
+            </td>
+
+            <td>
+                757,668,092
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    41
+                </strong>
+            </td>
+
+            <td>
+                Shape of My Heart
+            </td>
+
+            <td>
+                Backstreet Boys
+            </td>
+
+            <td>
+                3,134,943
+            </td>
+
+            <td>
+                17
+            </td>
+
+            <td>
+                32
+            </td>
+
+            <td>
+                110,400,442
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    42
+                </strong>
+            </td>
+
+            <td>
+                Rahasia Hati
+            </td>
+
+            <td>
+                Nidji
+            </td>
+
+            <td>
+                3,116,373
+            </td>
+
+            <td>
+                17
+            </td>
+
+            <td>
+                122
+            </td>
+
+            <td>
+                336,998,183
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    43
+                </strong>
+            </td>
+
+            <td>
+                Cincin
+            </td>
+
+            <td>
+                Hindia
+            </td>
+
+            <td>
+                3,103,755
+            </td>
+
+            <td>
+                7
+            </td>
+
+            <td>
+                170
+            </td>
+
+            <td>
+                537,791,688
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    44
+                </strong>
+            </td>
+
+            <td>
+                Sedia Aku Sebelum Hujan
+            </td>
+
+            <td>
+                Idgitaf
+            </td>
+
+            <td>
+                3,078,677
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                52
+            </td>
+
+            <td>
+                350,543,706
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    45
+                </strong>
+            </td>
+
+            <td>
+                2001x
+            </td>
+
+            <td>
+                Adrian Khalif
+            </td>
+
+            <td>
+                3,061,256
+            </td>
+
+            <td>
+                45
+            </td>
+
+            <td>
+                19
+            </td>
+
+            <td>
+                32,686,853
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    46
+                </strong>
+            </td>
+
+            <td>
+                the cure
+            </td>
+
+            <td>
+                Olivia Rodrigo
+            </td>
+
+            <td>
+                3,028,537
+            </td>
+
+            <td>
+                46
+            </td>
+
+            <td>
+                16
+            </td>
+
+            <td>
+                25,780,483
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    47
+                </strong>
+            </td>
+
+            <td>
+                Sempurna
+            </td>
+
+            <td>
+                Andra & The Backbone
+            </td>
+
+            <td>
+                3,023,059
+            </td>
+
+            <td>
+                15
+            </td>
+
+            <td>
+                482
+            </td>
+
+            <td>
+                554,798,893
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    48
+                </strong>
+            </td>
+
+            <td>
+                Penyangkalan
+            </td>
+
+            <td>
+                For Revenge
+            </td>
+
+            <td>
+                3,019,007
+            </td>
+
+            <td>
+                15
+            </td>
+
+            <td>
+                113
+            </td>
+
+            <td>
+                308,126,127
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    49
+                </strong>
+            </td>
+
+            <td>
+                Kangen
+            </td>
+
+            <td>
+                Dewa 19
+            </td>
+
+            <td>
+                2,998,408
+            </td>
+
+            <td>
+                33
+            </td>
+
+            <td>
+                461
+            </td>
+
+            <td>
+                353,468,679
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    50
+                </strong>
+            </td>
+
+            <td>
+                Great Expectation
+            </td>
+
+            <td>
+                SIENNA SPIRO
+            </td>
+
+            <td>
+                2,932,904
+            </td>
+
+            <td>
+                50
+            </td>
+
+            <td>
+                9
+            </td>
+
+            <td>
+                18,005,307
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    51
+                </strong>
+            </td>
+
+            <td>
+                Dan...
+            </td>
+
+            <td>
+                Sheila On 7
+            </td>
+
+            <td>
+                2,915,263
+            </td>
+
+            <td>
+                6
+            </td>
+
+            <td>
+                482
+            </td>
+
+            <td>
+                477,143,514
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    52
+                </strong>
+            </td>
+
+            <td>
+                What If I Call
+            </td>
+
+            <td>
+                Alex Crichton
+            </td>
+
+            <td>
+                2,904,530
+            </td>
+
+            <td>
+                43
+            </td>
+
+            <td>
+                10
+            </td>
+
+            <td>
+                23,318,732
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    53
+                </strong>
+            </td>
+
+            <td>
+                Amnesia
+            </td>
+
+            <td>
+                Al-Ghazali
+            </td>
+
+            <td>
+                2,897,491
+            </td>
+
+            <td>
+                53
+            </td>
+
+            <td>
+                4
+            </td>
+
+            <td>
+                8,702,452
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    54
+                </strong>
+            </td>
+
+            <td>
+                Terbuang Dalam Waktu
+            </td>
+
+            <td>
+                Barasuara
+            </td>
+
+            <td>
+                2,850,204
+            </td>
+
+            <td>
+                11
+            </td>
+
+            <td>
+                66
+            </td>
+
+            <td>
+                209,067,632
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    55
+                </strong>
+            </td>
+
+            <td>
+                Kita usahakan rumah itu
+            </td>
+
+            <td>
+                Sal Priadi
+            </td>
+
+            <td>
+                2,822,298
+            </td>
+
+            <td>
+                18
+            </td>
+
+            <td>
+                89
+            </td>
+
+            <td>
+                258,537,652
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    56
+                </strong>
+            </td>
+
+            <td>
+                Anugerah Terindah
+            </td>
+
+            <td>
+                Andmesh
+            </td>
+
+            <td>
+                2,799,852
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                99
+            </td>
+
+            <td>
+                342,239,252
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    57
+                </strong>
+            </td>
+
+            <td>
+                Foto kita blur
+            </td>
+
+            <td>
+                Sal Priadi
+            </td>
+
+            <td>
+                2,666,708
+            </td>
+
+            <td>
+                25
+            </td>
+
+            <td>
+                18
+            </td>
+
+            <td>
+                55,928,553
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    58
+                </strong>
+            </td>
+
+            <td>
+                Pesan Terakhir
+            </td>
+
+            <td>
+                Lyodra
+            </td>
+
+            <td>
+                2,649,412
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                274
+            </td>
+
+            <td>
+                659,293,624
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    59
+                </strong>
+            </td>
+
+            <td>
+                Aku Milikmu
+            </td>
+
+            <td>
+                Dewa 19
+            </td>
+
+            <td>
+                2,645,256
+            </td>
+
+            <td>
+                18
+            </td>
+
+            <td>
+                147
+            </td>
+
+            <td>
+                276,671,791
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    60
+                </strong>
+            </td>
+
+            <td>
+                Negoro Angin
+            </td>
+
+            <td>
+                Muslih Fvnky
+            </td>
+
+            <td>
+                2,626,010
+            </td>
+
+            <td>
+                60
+            </td>
+
+            <td>
+                2
+            </td>
+
+            <td>
+                4,716,259
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    61
+                </strong>
+            </td>
+
+            <td>
+                Takkan Terganti
+            </td>
+
+            <td>
+                Marcell
+            </td>
+
+            <td>
+                2,608,012
+            </td>
+
+            <td>
+                61
+            </td>
+
+            <td>
+                292
+            </td>
+
+            <td>
+                144,288,525
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    62
+                </strong>
+            </td>
+
+            <td>
+                Runtuh
+            </td>
+
+            <td>
+                Feby Putri, Fiersa Besari
+            </td>
+
+            <td>
+                2,596,213
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                261
+            </td>
+
+            <td>
+                767,783,263
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    63
+                </strong>
+            </td>
+
+            <td>
+                Merry Christmas, i miss you
+            </td>
+
+            <td>
+                Alex Crichton
+            </td>
+
+            <td>
+                2,510,992
+            </td>
+
+            <td>
+                58
+            </td>
+
+            <td>
+                16
+            </td>
+
+            <td>
+                32,889,280
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    64
+                </strong>
+            </td>
+
+            <td>
+                Masa ini, Nanti, dan Masa Indah Lainnya
+            </td>
+
+            <td>
+                Nuca
+            </td>
+
+            <td>
+                2,491,196
+            </td>
+
+            <td>
+                25
+            </td>
+
+            <td>
+                33
+            </td>
+
+            <td>
+                109,561,531
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    65
+                </strong>
+            </td>
+
+            <td>
+                Dirimu Yang Dulu
+            </td>
+
+            <td>
+                Anggis Devaki
+            </td>
+
+            <td>
+                2,487,452
+            </td>
+
+            <td>
+                7
+            </td>
+
+            <td>
+                49
+            </td>
+
+            <td>
+                166,711,561
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    66
+                </strong>
+            </td>
+
+            <td>
+                Negoro Angin
+            </td>
+
+            <td>
+                Denny Caknan
+            </td>
+
+            <td>
+                2,487,105
+            </td>
+
+            <td>
+                62
+            </td>
+
+            <td>
+                28
+            </td>
+
+            <td>
+                50,253,456
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    67
+                </strong>
+            </td>
+
+            <td>
+                Nanti Kita Seperti Ini
+            </td>
+
+            <td>
+                Batas Senja
+            </td>
+
+            <td>
+                2,435,372
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                180
+            </td>
+
+            <td>
+                554,639,266
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    68
+                </strong>
+            </td>
+
+            <td>
+                Astaga Bercanda
+            </td>
+
+            <td>
+                Akbar Chalay, Mingse
+            </td>
+
+            <td>
+                2,425,252
+            </td>
+
+            <td>
+                18
+            </td>
+
+            <td>
+                15
+            </td>
+
+            <td>
+                53,901,336
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    69
+                </strong>
+            </td>
+
+            <td>
+                Lantas
+            </td>
+
+            <td>
+                Juicy Luicy
+            </td>
+
+            <td>
+                2,411,352
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                298
+            </td>
+
+            <td>
+                654,730,951
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    70
+                </strong>
+            </td>
+
+            <td>
+                Cinta Terakhir
+            </td>
+
+            <td>
+                Ari Lasso
+            </td>
+
+            <td>
+                2,404,190
+            </td>
+
+            <td>
+                65
+            </td>
+
+            <td>
+                123
+            </td>
+
+            <td>
+                195,861,371
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    71
+                </strong>
+            </td>
+
+            <td>
+                MMG (My Mine Gueh)
+            </td>
+
+            <td>
+                Naykilla
+            </td>
+
+            <td>
+                2,363,472
+            </td>
+
+            <td>
+                17
+            </td>
+
+            <td>
+                15
+            </td>
+
+            <td>
+                52,574,308
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    72
+                </strong>
+            </td>
+
+            <td>
+                Cinta Terlarang
+            </td>
+
+            <td>
+                The Virgin
+            </td>
+
+            <td>
+                2,361,247
+            </td>
+
+            <td>
+                72
+            </td>
+
+            <td>
+                12
+            </td>
+
+            <td>
+                19,825,536
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    73
+                </strong>
+            </td>
+
+            <td>
+                Beauty And A Beat
+            </td>
+
+            <td>
+                Justin Bieber, Nicki Minaj
+            </td>
+
+            <td>
+                2,311,039
+            </td>
+
+            <td>
+                11
+            </td>
+
+            <td>
+                30
+            </td>
+
+            <td>
+                97,499,590
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    74
+                </strong>
+            </td>
+
+            <td>
+                The Man Who Can't Be Moved
+            </td>
+
+            <td>
+                The Script
+            </td>
+
+            <td>
+                2,291,736
+            </td>
+
+            <td>
+                33
+            </td>
+
+            <td>
+                199
+            </td>
+
+            <td>
+                193,589,157
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    75
+                </strong>
+            </td>
+
+            <td>
+                Cinderella
+            </td>
+
+            <td>
+                Mac Miller, Ty Dolla $ign
+            </td>
+
+            <td>
+                2,268,805
+            </td>
+
+            <td>
+                75
+            </td>
+
+            <td>
+                7
+            </td>
+
+            <td>
+                13,479,725
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    76
+                </strong>
+            </td>
+
+            <td>
+                Surat Cinta Untuk Starla
+            </td>
+
+            <td>
+                Virgoun
+            </td>
+
+            <td>
+                2,234,682
+            </td>
+
+            <td>
+                38
+            </td>
+
+            <td>
+                215
+            </td>
+
+            <td>
+                314,770,886
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    77
+                </strong>
+            </td>
+
+            <td>
+                Hujan
+            </td>
+
+            <td>
+                Utopia
+            </td>
+
+            <td>
+                2,212,618
+            </td>
+
+            <td>
+                60
+            </td>
+
+            <td>
+                72
+            </td>
+
+            <td>
+                130,603,824
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    78
+                </strong>
+            </td>
+
+            <td>
+                Kembali Pulang
+            </td>
+
+            <td>
+                Suara Kayu, Feby Putri
+            </td>
+
+            <td>
+                2,170,329
+            </td>
+
+            <td>
+                11
+            </td>
+
+            <td>
+                192
+            </td>
+
+            <td>
+                509,504,352
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    79
+                </strong>
+            </td>
+
+            <td>
+                Risk It All
+            </td>
+
+            <td>
+                Bruno Mars
+            </td>
+
+            <td>
+                2,163,014
+            </td>
+
+            <td>
+                9
+            </td>
+
+            <td>
+                33
+            </td>
+
+            <td>
+                119,420,742
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    80
+                </strong>
+            </td>
+
+            <td>
+                Seandainya
+            </td>
+
+            <td>
+                Vierra
+            </td>
+
+            <td>
+                2,143,118
+            </td>
+
+            <td>
+                18
+            </td>
+
+            <td>
+                294
+            </td>
+
+            <td>
+                567,429,930
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    81
+                </strong>
+            </td>
+
+            <td>
+                Tapi Bukan Aku
+            </td>
+
+            <td>
+                Kerispatih
+            </td>
+
+            <td>
+                2,137,836
+            </td>
+
+            <td>
+                55
+            </td>
+
+            <td>
+                106
+            </td>
+
+            <td>
+                176,850,086
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    82
+                </strong>
+            </td>
+
+            <td>
+                back to friends
+            </td>
+
+            <td>
+                sombr
+            </td>
+
+            <td>
+                2,136,536
+            </td>
+
+            <td>
+                11
+            </td>
+
+            <td>
+                75
+            </td>
+
+            <td>
+                226,405,090
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    83
+                </strong>
+            </td>
+
+            <td>
+                drop dead
+            </td>
+
+            <td>
+                Olivia Rodrigo
+            </td>
+
+            <td>
+                2,126,170
+            </td>
+
+            <td>
+                35
+            </td>
+
+            <td>
+                25
+            </td>
+
+            <td>
+                61,631,135
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    84
+                </strong>
+            </td>
+
+            <td>
+                Duka
+            </td>
+
+            <td>
+                Last Child
+            </td>
+
+            <td>
+                2,121,943
+            </td>
+
+            <td>
+                10
+            </td>
+
+            <td>
+                275
+            </td>
+
+            <td>
+                680,807,287
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    85
+                </strong>
+            </td>
+
+            <td>
+                Di Ujung Jalan
+            </td>
+
+            <td>
+                SAMSONS
+            </td>
+
+            <td>
+                2,103,919
+            </td>
+
+            <td>
+                24
+            </td>
+
+            <td>
+                66
+            </td>
+
+            <td>
+                164,646,336
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    86
+                </strong>
+            </td>
+
+            <td>
+                1000X
+            </td>
+
+            <td>
+                Ghea Indrawari
+            </td>
+
+            <td>
+                2,100,973
+            </td>
+
+            <td>
+                33
+            </td>
+
+            <td>
+                28
+            </td>
+
+            <td>
+                75,654,835
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    87
+                </strong>
+            </td>
+
+            <td>
+                Sadrah
+            </td>
+
+            <td>
+                For Revenge
+            </td>
+
+            <td>
+                2,095,947
+            </td>
+
+            <td>
+                48
+            </td>
+
+            <td>
+                97
+            </td>
+
+            <td>
+                184,487,206
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    88
+                </strong>
+            </td>
+
+            <td>
+                Untuk Perempuan Yang Sedang Di Pelukan
+            </td>
+
+            <td>
+                Payung Teduh
+            </td>
+
+            <td>
+                2,084,875
+            </td>
+
+            <td>
+                23
+            </td>
+
+            <td>
+                551
+            </td>
+
+            <td>
+                427,578,010
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    89
+                </strong>
+            </td>
+
+            <td>
+                Sekian, Terima Kasih
+            </td>
+
+            <td>
+                Lealona, The Jeblogs
+            </td>
+
+            <td>
+                2,083,909
+            </td>
+
+            <td>
+                89
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                4,994,682
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    90
+                </strong>
+            </td>
+
+            <td>
+                Pura Pura Lupa
+            </td>
+
+            <td>
+                Mahen
+            </td>
+
+            <td>
+                2,074,850
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                249
+            </td>
+
+            <td>
+                311,683,045
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    91
+                </strong>
+            </td>
+
+            <td>
+                Kenangan Terindah
+            </td>
+
+            <td>
+                SAMSONS
+            </td>
+
+            <td>
+                2,067,971
+            </td>
+
+            <td>
+                63
+            </td>
+
+            <td>
+                326
+            </td>
+
+            <td>
+                189,532,897
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    92
+                </strong>
+            </td>
+
+            <td>
+                Tak Kan Hilang
+            </td>
+
+            <td>
+                Budi Doremi
+            </td>
+
+            <td>
+                2,064,577
+            </td>
+
+            <td>
+                2
+            </td>
+
+            <td>
+                206
+            </td>
+
+            <td>
+                451,822,424
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    93
+                </strong>
+            </td>
+
+            <td>
+                Bawa Dia Kembali
+            </td>
+
+            <td>
+                Mahalini
+            </td>
+
+            <td>
+                2,043,427
+            </td>
+
+            <td>
+                4
+            </td>
+
+            <td>
+                138
+            </td>
+
+            <td>
+                363,348,847
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    94
+                </strong>
+            </td>
+
+            <td>
+                Bunga Maaf
+            </td>
+
+            <td>
+                The Lantis
+            </td>
+
+            <td>
+                2,020,209
+            </td>
+
+            <td>
+                2
+            </td>
+
+            <td>
+                97
+            </td>
+
+            <td>
+                298,489,252
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    95
+                </strong>
+            </td>
+
+            <td>
+                Die With A Smile
+            </td>
+
+            <td>
+                Lady Gaga, Bruno Mars
+            </td>
+
+            <td>
+                2,013,956
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                112
+            </td>
+
+            <td>
+                365,244,305
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    96
+                </strong>
+            </td>
+
+            <td>
+                Payphone
+            </td>
+
+            <td>
+                Maroon 5, Wiz Khalifa
+            </td>
+
+            <td>
+                2,004,817
+            </td>
+
+            <td>
+                65
+            </td>
+
+            <td>
+                201
+            </td>
+
+            <td>
+                212,243,812
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    97
+                </strong>
+            </td>
+
+            <td>
+                Jakarta Hari Ini
+            </td>
+
+            <td>
+                For Revenge, Stereo Wall
+            </td>
+
+            <td>
+                1,972,259
+            </td>
+
+            <td>
+                7
+            </td>
+
+            <td>
+                179
+            </td>
+
+            <td>
+                444,748,548
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    98
+                </strong>
+            </td>
+
+            <td>
+                Bila Kau Tak Disampingku
+            </td>
+
+            <td>
+                Sheila On 7
+            </td>
+
+            <td>
+                1,962,222
+            </td>
+
+            <td>
+                7
+            </td>
+
+            <td>
+                84
+            </td>
+
+            <td>
+                217,322,358
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    99
+                </strong>
+            </td>
+
+            <td>
+                Dia Masa Lalumu, Aku Masa Depanmu
+            </td>
+
+            <td>
+                Vionita
+            </td>
+
+            <td>
+                1,940,429
+            </td>
+
+            <td>
+                6
+            </td>
+
+            <td>
+                110
+            </td>
+
+            <td>
+                199,877,099
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    100
+                </strong>
+            </td>
+
+            <td>
+                Semua Aku Dirayakan
+            </td>
+
+            <td>
+                Nadin Amizah
+            </td>
+
+            <td>
+                1,939,563
+            </td>
+
+            <td>
+                11
+            </td>
+
+            <td>
+                166
+            </td>
+
+            <td>
+                328,931,593
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    101
+                </strong>
+            </td>
+
+            <td>
+                Percuma
+            </td>
+
+            <td>
+                Mahalini
+            </td>
+
+            <td>
+                1,932,534
+            </td>
+
+            <td>
+                71
+            </td>
+
+            <td>
+                6
+            </td>
+
+            <td>
+                11,700,010
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    102
+                </strong>
+            </td>
+
+            <td>
+                Die On This Hill
+            </td>
+
+            <td>
+                SIENNA SPIRO
+            </td>
+
+            <td>
+                1,919,791
+            </td>
+
+            <td>
+                11
+            </td>
+
+            <td>
+                44
+            </td>
+
+            <td>
+                97,558,607
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    103
+                </strong>
+            </td>
+
+            <td>
+                Jiwa Yang Bersedih
+            </td>
+
+            <td>
+                Ghea Indrawari
+            </td>
+
+            <td>
+                1,907,761
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                174
+            </td>
+
+            <td>
+                426,612,559
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    104
+                </strong>
+            </td>
+
+            <td>
+                Firasat
+            </td>
+
+            <td>
+                Marcell
+            </td>
+
+            <td>
+                1,890,948
+            </td>
+
+            <td>
+                53
+            </td>
+
+            <td>
+                45
+            </td>
+
+            <td>
+                81,599,906
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    105
+                </strong>
+            </td>
+
+            <td>
+                Sailor Song
+            </td>
+
+            <td>
+                Gigi Perez
+            </td>
+
+            <td>
+                1,877,522
+            </td>
+
+            <td>
+                25
+            </td>
+
+            <td>
+                89
+            </td>
+
+            <td>
+                215,086,114
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    106
+                </strong>
+            </td>
+
+            <td>
+                WILDFLOWER
+            </td>
+
+            <td>
+                Billie Eilish
+            </td>
+
+            <td>
+                1,877,313
+            </td>
+
+            <td>
+                19
+            </td>
+
+            <td>
+                103
+            </td>
+
+            <td>
+                249,555,961
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    107
+                </strong>
+            </td>
+
+            <td>
+                Janji Setia
+            </td>
+
+            <td>
+                Tiara Andini
+            </td>
+
+            <td>
+                1,873,958
+            </td>
+
+            <td>
+                13
+            </td>
+
+            <td>
+                237
+            </td>
+
+            <td>
+                364,517,514
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    108
+                </strong>
+            </td>
+
+            <td>
+                Satu
+            </td>
+
+            <td>
+                Dewa
+            </td>
+
+            <td>
+                1,860,975
+            </td>
+
+            <td>
+                71
+            </td>
+
+            <td>
+                8
+            </td>
+
+            <td>
+                14,502,762
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    109
+                </strong>
+            </td>
+
+            <td>
+                Menerima Luka
+            </td>
+
+            <td>
+                Natasya Sabella
+            </td>
+
+            <td>
+                1,855,314
+            </td>
+
+            <td>
+                18
+            </td>
+
+            <td>
+                42
+            </td>
+
+            <td>
+                113,950,945
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    110
+                </strong>
+            </td>
+
+            <td>
+                Ain't In LA
+            </td>
+
+            <td>
+                ADÉLA
+            </td>
+
+            <td>
+                1,854,215
+            </td>
+
+            <td>
+                110
+            </td>
+
+            <td>
+                4
+            </td>
+
+            <td>
+                6,361,727
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    111
+                </strong>
+            </td>
+
+            <td>
+                Mengenangmu
+            </td>
+
+            <td>
+                Kerispatih
+            </td>
+
+            <td>
+                1,851,345
+            </td>
+
+            <td>
+                75
+            </td>
+
+            <td>
+                81
+            </td>
+
+            <td>
+                119,720,779
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    112
+                </strong>
+            </td>
+
+            <td>
+                Interaksi
+            </td>
+
+            <td>
+                Tulus
+            </td>
+
+            <td>
+                1,825,981
+            </td>
+
+            <td>
+                10
+            </td>
+
+            <td>
+                241
+            </td>
+
+            <td>
+                464,125,896
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    113
+                </strong>
+            </td>
+
+            <td>
+                Tak Segampang Itu
+            </td>
+
+            <td>
+                Anggi Marito
+            </td>
+
+            <td>
+                1,821,780
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                197
+            </td>
+
+            <td>
+                703,352,741
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    114
+                </strong>
+            </td>
+
+            <td>
+                Gemilang
+            </td>
+
+            <td>
+                Perunggu
+            </td>
+
+            <td>
+                1,814,550
+            </td>
+
+            <td>
+                80
+            </td>
+
+            <td>
+                29
+            </td>
+
+            <td>
+                49,646,619
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    115
+                </strong>
+            </td>
+
+            <td>
+                Locked out of Heaven
+            </td>
+
+            <td>
+                Bruno Mars
+            </td>
+
+            <td>
+                1,810,224
+            </td>
+
+            <td>
+                52
+            </td>
+
+            <td>
+                94
+            </td>
+
+            <td>
+                150,570,003
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    116
+                </strong>
+            </td>
+
+            <td>
+                Cinta Luar Biasa
+            </td>
+
+            <td>
+                Andmesh
+            </td>
+
+            <td>
+                1,796,852
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                172
+            </td>
+
+            <td>
+                120,776,390
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    117
+                </strong>
+            </td>
+
+            <td>
+                Tanpa Cinta
+            </td>
+
+            <td>
+                Yovie & Nuno
+            </td>
+
+            <td>
+                1,786,986
+            </td>
+
+            <td>
+                38
+            </td>
+
+            <td>
+                208
+            </td>
+
+            <td>
+                339,982,137
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    118
+                </strong>
+            </td>
+
+            <td>
+                Sorai
+            </td>
+
+            <td>
+                Nadin Amizah
+            </td>
+
+            <td>
+                1,760,271
+            </td>
+
+            <td>
+                44
+            </td>
+
+            <td>
+                265
+            </td>
+
+            <td>
+                351,100,309
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    119
+                </strong>
+            </td>
+
+            <td>
+                One Of The Girls
+            </td>
+
+            <td>
+                The Weeknd, JENNIE, Lily-Rose Depp
+            </td>
+
+            <td>
+                1,736,578
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                137
+            </td>
+
+            <td>
+                300,055,216
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    120
+                </strong>
+            </td>
+
+            <td>
+                Gala bunga matahari
+            </td>
+
+            <td>
+                Sal Priadi
+            </td>
+
+            <td>
+                1,733,136
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                121
+            </td>
+
+            <td>
+                308,185,583
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    121
+                </strong>
+            </td>
+
+            <td>
+                Di Akhir Perang
+            </td>
+
+            <td>
+                Nadin Amizah
+            </td>
+
+            <td>
+                1,727,181
+            </td>
+
+            <td>
+                50
+            </td>
+
+            <td>
+                64
+            </td>
+
+            <td>
+                127,493,016
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    122
+                </strong>
+            </td>
+
+            <td>
+                Hingga Tua Bersama
+            </td>
+
+            <td>
+                Rizky Febian
+            </td>
+
+            <td>
+                1,725,682
+            </td>
+
+            <td>
+                8
+            </td>
+
+            <td>
+                94
+            </td>
+
+            <td>
+                136,024,586
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    123
+                </strong>
+            </td>
+
+            <td>
+                Evaluasi
+            </td>
+
+            <td>
+                Hindia
+            </td>
+
+            <td>
+                1,723,330
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                257
+            </td>
+
+            <td>
+                553,308,380
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    124
+                </strong>
+            </td>
+
+            <td>
+                Pelangi
+            </td>
+
+            <td>
+                Hivi!
+            </td>
+
+            <td>
+                1,719,743
+            </td>
+
+            <td>
+                27
+            </td>
+
+            <td>
+                341
+            </td>
+
+            <td>
+                162,261,064
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    125
+                </strong>
+            </td>
+
+            <td>
+                BIRDS OF A FEATHER
+            </td>
+
+            <td>
+                Billie Eilish
+            </td>
+
+            <td>
+                1,717,863
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                124
+            </td>
+
+            <td>
+                374,085,225
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    126
+                </strong>
+            </td>
+
+            <td>
+                Blank Space
+            </td>
+
+            <td>
+                Taylor Swift
+            </td>
+
+            <td>
+                1,706,589
+            </td>
+
+            <td>
+                67
+            </td>
+
+            <td>
+                65
+            </td>
+
+            <td>
+                69,971,807
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    127
+                </strong>
+            </td>
+
+            <td>
+                Kau Masih Kekasihku
+            </td>
+
+            <td>
+                NaFF
+            </td>
+
+            <td>
+                1,696,147
+            </td>
+
+            <td>
+                40
+            </td>
+
+            <td>
+                89
+            </td>
+
+            <td>
+                162,044,686
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    128
+                </strong>
+            </td>
+
+            <td>
+                Kaulah Kamuku
+            </td>
+
+            <td>
+                Fatin, Mikha Angelo
+            </td>
+
+            <td>
+                1,682,499
+            </td>
+
+            <td>
+                93
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                5,185,621
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    129
+                </strong>
+            </td>
+
+            <td>
+                Asal Kau Bahagia
+            </td>
+
+            <td>
+                Armada
+            </td>
+
+            <td>
+                1,679,162
+            </td>
+
+            <td>
+                5
+            </td>
+
+            <td>
+                76
+            </td>
+
+            <td>
+                21,620,366
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    130
+                </strong>
+            </td>
+
+            <td>
+                Lihat Kebunku (Taman Bunga)
+            </td>
+
+            <td>
+                Aku Jeje
+            </td>
+
+            <td>
+                1,660,609
+            </td>
+
+            <td>
+                11
+            </td>
+
+            <td>
+                55
+            </td>
+
+            <td>
+                176,025,633
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    131
+                </strong>
+            </td>
+
+            <td>
+                Pure
+            </td>
+
+            <td>
+                SIENNA SPIRO
+            </td>
+
+            <td>
+                1,649,716
+            </td>
+
+            <td>
+                114
+            </td>
+
+            <td>
+                6
+            </td>
+
+            <td>
+                9,243,376
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    132
+                </strong>
+            </td>
+
+            <td>
+                Just Give Me a Reason
+            </td>
+
+            <td>
+                P!nk, Nate Ruess
+            </td>
+
+            <td>
+                1,647,440
+            </td>
+
+            <td>
+                108
+            </td>
+
+            <td>
+                25
+            </td>
+
+            <td>
+                33,118,159
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    133
+                </strong>
+            </td>
+
+            <td>
+                Rahasia Hati
+            </td>
+
+            <td>
+                Element
+            </td>
+
+            <td>
+                1,631,234
+            </td>
+
+            <td>
+                8
+            </td>
+
+            <td>
+                136
+            </td>
+
+            <td>
+                208,671,055
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    134
+                </strong>
+            </td>
+
+            <td>
+                Cinta Dan Rahasia
+            </td>
+
+            <td>
+                Yura Yunita, Glenn Fredly
+            </td>
+
+            <td>
+                1,619,115
+            </td>
+
+            <td>
+                47
+            </td>
+
+            <td>
+                433
+            </td>
+
+            <td>
+                177,250,559
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    135
+                </strong>
+            </td>
+
+            <td>
+                Backburner
+            </td>
+
+            <td>
+                NIKI
+            </td>
+
+            <td>
+                1,610,269
+            </td>
+
+            <td>
+                19
+            </td>
+
+            <td>
+                129
+            </td>
+
+            <td>
+                206,059,137
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    136
+                </strong>
+            </td>
+
+            <td>
+                Night Changes
+            </td>
+
+            <td>
+                One Direction
+            </td>
+
+            <td>
+                1,603,084
+            </td>
+
+            <td>
+                18
+            </td>
+
+            <td>
+                302
+            </td>
+
+            <td>
+                456,298,014
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    137
+                </strong>
+            </td>
+
+            <td>
+                That Should Be Me
+            </td>
+
+            <td>
+                Justin Bieber
+            </td>
+
+            <td>
+                1,601,032
+            </td>
+
+            <td>
+                13
+            </td>
+
+            <td>
+                29
+            </td>
+
+            <td>
+                72,751,986
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    138
+                </strong>
+            </td>
+
+            <td>
+                Tak Semudah Hompimpa
+            </td>
+
+            <td>
+                Nabila Taqiyyah
+            </td>
+
+            <td>
+                1,598,548
+            </td>
+
+            <td>
+                109
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                4,904,672
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    139
+                </strong>
+            </td>
+
+            <td>
+                To the Bone
+            </td>
+
+            <td>
+                Pamungkas
+            </td>
+
+            <td>
+                1,585,481
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                335
+            </td>
+
+            <td>
+                428,082,379
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    140
+                </strong>
+            </td>
+
+            <td>
+                Pupus
+            </td>
+
+            <td>
+                Dewa
+            </td>
+
+            <td>
+                1,578,643
+            </td>
+
+            <td>
+                102
+            </td>
+
+            <td>
+                39
+            </td>
+
+            <td>
+                48,986,890
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    141
+                </strong>
+            </td>
+
+            <td>
+                Akad
+            </td>
+
+            <td>
+                Payung Teduh
+            </td>
+
+            <td>
+                1,572,837
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                175
+            </td>
+
+            <td>
+                85,972,730
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    142
+                </strong>
+            </td>
+
+            <td>
+                Panasea
+            </td>
+
+            <td>
+                rumahsakit
+            </td>
+
+            <td>
+                1,563,526
+            </td>
+
+            <td>
+                142
+            </td>
+
+            <td>
+                6
+            </td>
+
+            <td>
+                6,560,045
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    143
+                </strong>
+            </td>
+
+            <td>
+                Aku Yang Jatuh Cinta
+            </td>
+
+            <td>
+                Dudy Oris
+            </td>
+
+            <td>
+                1,558,036
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                126
+            </td>
+
+            <td>
+                390,721,589
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    144
+                </strong>
+            </td>
+
+            <td>
+                Kita Ke Sana
+            </td>
+
+            <td>
+                Hindia
+            </td>
+
+            <td>
+                1,550,473
+            </td>
+
+            <td>
+                47
+            </td>
+
+            <td>
+                119
+            </td>
+
+            <td>
+                241,574,378
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    145
+                </strong>
+            </td>
+
+            <td>
+                Tampar
+            </td>
+
+            <td>
+                Juicy Luicy
+            </td>
+
+            <td>
+                1,548,580
+            </td>
+
+            <td>
+                9
+            </td>
+
+            <td>
+                231
+            </td>
+
+            <td>
+                454,309,836
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    146
+                </strong>
+            </td>
+
+            <td>
+                Teganya Kau
+            </td>
+
+            <td>
+                Lyodra
+            </td>
+
+            <td>
+                1,547,706
+            </td>
+
+            <td>
+                46
+            </td>
+
+            <td>
+                40
+            </td>
+
+            <td>
+                73,311,426
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    147
+                </strong>
+            </td>
+
+            <td>
+                Wonderwall - Remastered
+            </td>
+
+            <td>
+                Oasis
+            </td>
+
+            <td>
+                1,513,690
+            </td>
+
+            <td>
+                76
+            </td>
+
+            <td>
+                31
+            </td>
+
+            <td>
+                24,705,356
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    148
+                </strong>
+            </td>
+
+            <td>
+                Love Me Not
+            </td>
+
+            <td>
+                Ravyn Lenae
+            </td>
+
+            <td>
+                1,513,469
+            </td>
+
+            <td>
+                90
+            </td>
+
+            <td>
+                37
+            </td>
+
+            <td>
+                54,801,785
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    149
+                </strong>
+            </td>
+
+            <td>
+                Sang Badut
+            </td>
+
+            <td>
+                Raim Laode
+            </td>
+
+            <td>
+                1,512,077
+            </td>
+
+            <td>
+                78
+            </td>
+
+            <td>
+                14
+            </td>
+
+            <td>
+                25,340,110
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    150
+                </strong>
+            </td>
+
+            <td>
+                The Night We Met
+            </td>
+
+            <td>
+                Lord Huron
+            </td>
+
+            <td>
+                1,510,690
+            </td>
+
+            <td>
+                35
+            </td>
+
+            <td>
+                160
+            </td>
+
+            <td>
+                279,623,681
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    151
+                </strong>
+            </td>
+
+            <td>
+                Tak Ingin Usai
+            </td>
+
+            <td>
+                Keisya Levronka
+            </td>
+
+            <td>
+                1,483,774
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                226
+            </td>
+
+            <td>
+                405,741,414
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    152
+                </strong>
+            </td>
+
+            <td>
+                Anak Kampung - Thailand Edit
+            </td>
+
+            <td>
+                COPACABANA
+            </td>
+
+            <td>
+                1,483,308
+            </td>
+
+            <td>
+                125
+            </td>
+
+            <td>
+                4
+            </td>
+
+            <td>
+                5,992,134
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    153
+                </strong>
+            </td>
+
+            <td>
+                Talking to the Moon
+            </td>
+
+            <td>
+                Bruno Mars
+            </td>
+
+            <td>
+                1,479,673
+            </td>
+
+            <td>
+                14
+            </td>
+
+            <td>
+                248
+            </td>
+
+            <td>
+                249,503,491
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    154
+                </strong>
+            </td>
+
+            <td>
+                Kebutuhan Hati
+            </td>
+
+            <td>
+                Kaleb J
+            </td>
+
+            <td>
+                1,468,272
+            </td>
+
+            <td>
+                74
+            </td>
+
+            <td>
+                77
+            </td>
+
+            <td>
+                94,501,197
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    155
+                </strong>
+            </td>
+
+            <td>
+                Demi Cinta
+            </td>
+
+            <td>
+                Kerispatih
+            </td>
+
+            <td>
+                1,465,421
+            </td>
+
+            <td>
+                122
+            </td>
+
+            <td>
+                27
+            </td>
+
+            <td>
+                33,109,882
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    156
+                </strong>
+            </td>
+
+            <td>
+                Terlalu Lama
+            </td>
+
+            <td>
+                Vierra
+            </td>
+
+            <td>
+                1,454,139
+            </td>
+
+            <td>
+                71
+            </td>
+
+            <td>
+                78
+            </td>
+
+            <td>
+                126,779,062
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    157
+                </strong>
+            </td>
+
+            <td>
+                Cinta Sejati - Remastered 2024
+            </td>
+
+            <td>
+                Bunga Citra Lestari
+            </td>
+
+            <td>
+                1,453,463
+            </td>
+
+            <td>
+                127
+            </td>
+
+            <td>
+                26
+            </td>
+
+            <td>
+                34,903,135
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    158
+                </strong>
+            </td>
+
+            <td>
+                Risalah Hati
+            </td>
+
+            <td>
+                Pamungkas
+            </td>
+
+            <td>
+                1,436,379
+            </td>
+
+            <td>
+                63
+            </td>
+
+            <td>
+                205
+            </td>
+
+            <td>
+                222,085,513
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    159
+                </strong>
+            </td>
+
+            <td>
+                Kata Mereka Ini Berlebihan
+            </td>
+
+            <td>
+                Bernadya
+            </td>
+
+            <td>
+                1,425,405
+            </td>
+
+            <td>
+                3
+            </td>
+
+            <td>
+                135
+            </td>
+
+            <td>
+                380,417,285
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    160
+                </strong>
+            </td>
+
+            <td>
+                Andai Aku Bisa
+            </td>
+
+            <td>
+                Chrisye
+            </td>
+
+            <td>
+                1,421,291
+            </td>
+
+            <td>
+                54
+            </td>
+
+            <td>
+                65
+            </td>
+
+            <td>
+                75,011,718
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    161
+                </strong>
+            </td>
+
+            <td>
+                Iris
+            </td>
+
+            <td>
+                The Goo Goo Dolls
+            </td>
+
+            <td>
+                1,419,374
+            </td>
+
+            <td>
+                73
+            </td>
+
+            <td>
+                158
+            </td>
+
+            <td>
+                163,607,613
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    162
+                </strong>
+            </td>
+
+            <td>
+                You'll Be in My Heart - Spotify Singles
+            </td>
+
+            <td>
+                NIKI
+            </td>
+
+            <td>
+                1,413,890
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                84
+            </td>
+
+            <td>
+                297,910,128
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    163
+                </strong>
+            </td>
+
+            <td>
+                L
+            </td>
+
+            <td>
+                Halstage
+            </td>
+
+            <td>
+                1,409,545
+            </td>
+
+            <td>
+                8
+            </td>
+
+            <td>
+                233
+            </td>
+
+            <td>
+                461,741,758
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    164
+                </strong>
+            </td>
+
+            <td>
+                Silence
+            </td>
+
+            <td>
+                Marshmello, Khalid
+            </td>
+
+            <td>
+                1,405,803
+            </td>
+
+            <td>
+                6
+            </td>
+
+            <td>
+                64
+            </td>
+
+            <td>
+                23,001,548
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    165
+                </strong>
+            </td>
+
+            <td>
+                Usik
+            </td>
+
+            <td>
+                Feby Putri
+            </td>
+
+            <td>
+                1,403,137
+            </td>
+
+            <td>
+                114
+            </td>
+
+            <td>
+                110
+            </td>
+
+            <td>
+                101,538,980
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    166
+                </strong>
+            </td>
+
+            <td>
+                Abadi - Indo Version
+            </td>
+
+            <td>
+                Dendi Nata
+            </td>
+
+            <td>
+                1,400,464
+            </td>
+
+            <td>
+                81
+            </td>
+
+            <td>
+                95
+            </td>
+
+            <td>
+                149,775,027
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    167
+                </strong>
+            </td>
+
+            <td>
+                honeybee
+            </td>
+
+            <td>
+                Olivia Rodrigo
+            </td>
+
+            <td>
+                1,385,474
+            </td>
+
+            <td>
+                167
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                1,385,474
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    168
+                </strong>
+            </td>
+
+            <td>
+                Ku Dengannya Kau Dengan Dia
+            </td>
+
+            <td>
+                Afgan
+            </td>
+
+            <td>
+                1,384,349
+            </td>
+
+            <td>
+                70
+            </td>
+
+            <td>
+                86
+            </td>
+
+            <td>
+                86,419,115
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    169
+                </strong>
+            </td>
+
+            <td>
+                Heaven
+            </td>
+
+            <td>
+                Bryan Adams
+            </td>
+
+            <td>
+                1,383,633
+            </td>
+
+            <td>
+                108
+            </td>
+
+            <td>
+                13
+            </td>
+
+            <td>
+                20,269,199
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    170
+                </strong>
+            </td>
+
+            <td>
+                Mantan Terindah
+            </td>
+
+            <td>
+                Kahitna
+            </td>
+
+            <td>
+                1,382,413
+            </td>
+
+            <td>
+                145
+            </td>
+
+            <td>
+                15
+            </td>
+
+            <td>
+                19,928,021
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    171
+                </strong>
+            </td>
+
+            <td>
+                Kasih Putih
+            </td>
+
+            <td>
+                Yovie Widianto, Glenn Fredly
+            </td>
+
+            <td>
+                1,379,720
+            </td>
+
+            <td>
+                33
+            </td>
+
+            <td>
+                54
+            </td>
+
+            <td>
+                114,013,288
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    172
+                </strong>
+            </td>
+
+            <td>
+                Jodoh Pasti Bertemu
+            </td>
+
+            <td>
+                Afgan
+            </td>
+
+            <td>
+                1,376,778
+            </td>
+
+            <td>
+                73
+            </td>
+
+            <td>
+                60
+            </td>
+
+            <td>
+                87,048,551
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    173
+                </strong>
+            </td>
+
+            <td>
+                Tenang
+            </td>
+
+            <td>
+                Judika, Andi Rianto
+            </td>
+
+            <td>
+                1,374,984
+            </td>
+
+            <td>
+                45
+            </td>
+
+            <td>
+                32
+            </td>
+
+            <td>
+                59,431,717
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    174
+                </strong>
+            </td>
+
+            <td>
+                Alamak
+            </td>
+
+            <td>
+                Rizky Febian, Adrian Khalif
+            </td>
+
+            <td>
+                1,368,550
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                50
+            </td>
+
+            <td>
+                136,585,978
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    175
+                </strong>
+            </td>
+
+            <td>
+                Who Knows
+            </td>
+
+            <td>
+                Daniel Caesar
+            </td>
+
+            <td>
+                1,366,984
+            </td>
+
+            <td>
+                59
+            </td>
+
+            <td>
+                48
+            </td>
+
+            <td>
+                79,408,358
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    176
+                </strong>
+            </td>
+
+            <td>
+                Those Eyes
+            </td>
+
+            <td>
+                New West
+            </td>
+
+            <td>
+                1,354,789
+            </td>
+
+            <td>
+                9
+            </td>
+
+            <td>
+                175
+            </td>
+
+            <td>
+                302,448,783
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    177
+                </strong>
+            </td>
+
+            <td>
+                Babak Terakhir
+            </td>
+
+            <td>
+                Raim Laode
+            </td>
+
+            <td>
+                1,350,232
+            </td>
+
+            <td>
+                163
+            </td>
+
+            <td>
+                14
+            </td>
+
+            <td>
+                17,413,908
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    178
+                </strong>
+            </td>
+
+            <td>
+                Mesra-mesraannya kecil-kecilan dulu
+            </td>
+
+            <td>
+                Sal Priadi
+            </td>
+
+            <td>
+                1,345,906
+            </td>
+
+            <td>
+                60
+            </td>
+
+            <td>
+                141
+            </td>
+
+            <td>
+                180,435,113
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    179
+                </strong>
+            </td>
+
+            <td>
+                That’s So True
+            </td>
+
+            <td>
+                Gracie Abrams
+            </td>
+
+            <td>
+                1,341,824
+            </td>
+
+            <td>
+                29
+            </td>
+
+            <td>
+                51
+            </td>
+
+            <td>
+                101,547,640
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    180
+                </strong>
+            </td>
+
+            <td>
+                Resah Jadi Luka
+            </td>
+
+            <td>
+                Daun Jatuh
+            </td>
+
+            <td>
+                1,340,329
+            </td>
+
+            <td>
+                13
+            </td>
+
+            <td>
+                307
+            </td>
+
+            <td>
+                382,808,822
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    181
+                </strong>
+            </td>
+
+            <td>
+                o,Tuan
+            </td>
+
+            <td>
+                .Feast
+            </td>
+
+            <td>
+                1,337,727
+            </td>
+
+            <td>
+                8
+            </td>
+
+            <td>
+                92
+            </td>
+
+            <td>
+                250,554,855
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    182
+                </strong>
+            </td>
+
+            <td>
+                Rabun Jauh
+            </td>
+
+            <td>
+                Bernadya
+            </td>
+
+            <td>
+                1,337,525
+            </td>
+
+            <td>
+                56
+            </td>
+
+            <td>
+                26
+            </td>
+
+            <td>
+                46,678,376
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    183
+                </strong>
+            </td>
+
+            <td>
+                Multo
+            </td>
+
+            <td>
+                Cup of Joe
+            </td>
+
+            <td>
+                1,332,479
+            </td>
+
+            <td>
+                58
+            </td>
+
+            <td>
+                55
+            </td>
+
+            <td>
+                95,080,332
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    184
+                </strong>
+            </td>
+
+            <td>
+                Berdansalah, Karir Ini Tak Ada Artinya
+            </td>
+
+            <td>
+                Hindia
+            </td>
+
+            <td>
+                1,315,888
+            </td>
+
+            <td>
+                83
+            </td>
+
+            <td>
+                79
+            </td>
+
+            <td>
+                120,023,763
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    185
+                </strong>
+            </td>
+
+            <td>
+                When I Was Your Man
+            </td>
+
+            <td>
+                Bruno Mars
+            </td>
+
+            <td>
+                1,313,741
+            </td>
+
+            <td>
+                29
+            </td>
+
+            <td>
+                224
+            </td>
+
+            <td>
+                301,458,981
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    186
+                </strong>
+            </td>
+
+            <td>
+                hate that i made you love me
+            </td>
+
+            <td>
+                Ariana Grande
+            </td>
+
+            <td>
+                1,311,237
+            </td>
+
+            <td>
+                89
+            </td>
+
+            <td>
+                18
+            </td>
+
+            <td>
+                28,105,719
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    187
+                </strong>
+            </td>
+
+            <td>
+                End of Beginning
+            </td>
+
+            <td>
+                Djo
+            </td>
+
+            <td>
+                1,308,965
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                137
+            </td>
+
+            <td>
+                309,863,343
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    188
+                </strong>
+            </td>
+
+            <td>
+                It Will Rain
+            </td>
+
+            <td>
+                Bruno Mars
+            </td>
+
+            <td>
+                1,305,324
+            </td>
+
+            <td>
+                4
+            </td>
+
+            <td>
+                243
+            </td>
+
+            <td>
+                320,992,067
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    189
+                </strong>
+            </td>
+
+            <td>
+                Photograph
+            </td>
+
+            <td>
+                Ed Sheeran
+            </td>
+
+            <td>
+                1,302,278
+            </td>
+
+            <td>
+                51
+            </td>
+
+            <td>
+                358
+            </td>
+
+            <td>
+                200,956,112
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    190
+                </strong>
+            </td>
+
+            <td>
+                Satu Bulan
+            </td>
+
+            <td>
+                Bernadya
+            </td>
+
+            <td>
+                1,297,960
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                133
+            </td>
+
+            <td>
+                450,188,133
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    191
+                </strong>
+            </td>
+
+            <td>
+                Hapus Aku
+            </td>
+
+            <td>
+                Nidji
+            </td>
+
+            <td>
+                1,287,888
+            </td>
+
+            <td>
+                8
+            </td>
+
+            <td>
+                130
+            </td>
+
+            <td>
+                210,918,001
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    192
+                </strong>
+            </td>
+
+            <td>
+                happier
+            </td>
+
+            <td>
+                Olivia Rodrigo
+            </td>
+
+            <td>
+                1,286,886
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                239
+            </td>
+
+            <td>
+                305,792,959
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    193
+                </strong>
+            </td>
+
+            <td>
+                Tapi Tahukah Kamu?
+            </td>
+
+            <td>
+                Dygta, Kamasean
+            </td>
+
+            <td>
+                1,286,230
+            </td>
+
+            <td>
+                4
+            </td>
+
+            <td>
+                74
+            </td>
+
+            <td>
+                166,874,821
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    194
+                </strong>
+            </td>
+
+            <td>
+                Mau Dibawa Kemana
+            </td>
+
+            <td>
+                Armada
+            </td>
+
+            <td>
+                1,285,656
+            </td>
+
+            <td>
+                194
+            </td>
+
+            <td>
+                1
+            </td>
+
+            <td>
+                1,285,656
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    195
+                </strong>
+            </td>
+
+            <td>
+                Just the Way You Are
+            </td>
+
+            <td>
+                Bruno Mars
+            </td>
+
+            <td>
+                1,285,381
+            </td>
+
+            <td>
+                50
+            </td>
+
+            <td>
+                192
+            </td>
+
+            <td>
+                228,641,918
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    196
+                </strong>
+            </td>
+
+            <td>
+                Bunga Abadi
+            </td>
+
+            <td>
+                Rio Clappy
+            </td>
+
+            <td>
+                1,261,817
+            </td>
+
+            <td>
+                6
+            </td>
+
+            <td>
+                117
+            </td>
+
+            <td>
+                300,029,177
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    197
+                </strong>
+            </td>
+
+            <td>
+                I Wanna Be Yours
+            </td>
+
+            <td>
+                Arctic Monkeys
+            </td>
+
+            <td>
+                1,256,289
+            </td>
+
+            <td>
+                24
+            </td>
+
+            <td>
+                210
+            </td>
+
+            <td>
+                367,540,876
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    198
+                </strong>
+            </td>
+
+            <td>
+                Starboy
+            </td>
+
+            <td>
+                The Weeknd, Daft Punk
+            </td>
+
+            <td>
+                1,251,361
+            </td>
+
+            <td>
+                7
+            </td>
+
+            <td>
+                124
+            </td>
+
+            <td>
+                138,435,552
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    199
+                </strong>
+            </td>
+
+            <td>
+                Disarankan di Bandung
+            </td>
+
+            <td>
+                Dongker, Jason Ranti
+            </td>
+
+            <td>
+                1,250,428
+            </td>
+
+            <td>
+                28
+            </td>
+
+            <td>
+                47
+            </td>
+
+            <td>
+                114,436,598
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>
+                <strong>
+                    200
+                </strong>
+            </td>
+
+            <td>
+                Mesin Waktu
+            </td>
+
+            <td>
+                Budi Doremi
+            </td>
+
+            <td>
+                1,250,226
+            </td>
+
+            <td>
+                24
+            </td>
+
+            <td>
+                134
+            </td>
+
+            <td>
+                153,570,110
+            </td>
+
+        </tr>
+
+        
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT CHART
+     ===================================================== -->
+
+<script>
+
+
+// ========================================================
+// DATA STREAMS
+// ========================================================
+
+const streamLabels =
+    ["Sesi Potret", "Dunia Yang Nanti", "Teh Hijau", "Iqro'", "Titik Nadir", "Ini Abadi", "Terbelah Jadi Dua", "Jatuh Suka", "Kita Lewati Berdua", "Bersenja Gurau"];
+
+
+const streamValues =
+    [9424082, 8547932, 7712801, 7602474, 5519507, 5417652, 5202433, 5178068, 5017796, 5011199];
+
+
+// ========================================================
+// DATA TOTAL STREAMS
+// ========================================================
+
+const totalLabels =
+    ["Serana", "Runtuh", "Rumah Ke Rumah", "Bertaut", "Monolog", "Monokrom", "Komang", "Tak Segampang Itu", "Selamat (Selamat Tinggal)", "Duka"];
+
+
+const totalValues =
+    [828816370, 767783263, 757668092, 752835540, 723971063, 709907335, 706227964, 703352741, 693750029, 680807287];
+
+
+// ========================================================
+// CHART TOP 10 STREAMS
+// ========================================================
+
+new Chart(
+
+    document.getElementById(
+        "streamsChart"
+    ),
+
+    {
+
+        type: "bar",
+
+
+        data: {
+
+            labels:
+                streamLabels,
+
+
+            datasets: [{
+
+                label:
+                    "Streams",
+
+
+                data:
+                    streamValues,
+
+
+                borderRadius:
+                    8,
+
+
+                borderSkipped:
+                    false
+
+            }]
+
+        },
+
+
+        options: {
+
+            responsive:
+                true,
+
+
+            maintainAspectRatio:
+                false,
+
+
+            indexAxis:
+                "y",
+
+
+            plugins: {
+
+                legend: {
+
+                    display:
+                        false
+
+                },
+
+
+                tooltip: {
+
+                    callbacks: {
+
+                        label:
+                            function(context) {
+
+                                return (
+                                    context.raw
+                                    .toLocaleString(
+                                        "id-ID"
+                                    )
+                                    + " streams"
+                                );
+
+                            }
+
+                    }
+
+                }
+
+            },
+
+
+            scales: {
+
+                x: {
+
+                    beginAtZero:
+                        true,
+
+
+                    ticks: {
+
+                        callback:
+                            function(value) {
+
+                                return value
+                                    .toLocaleString(
+                                        "id-ID"
+                                    );
+
+                            }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+
+// ========================================================
+// CHART TOP 10 TOTAL STREAMS
+// ========================================================
+
+new Chart(
+
+    document.getElementById(
+        "totalStreamsChart"
+    ),
+
+    {
+
+        type: "bar",
+
+
+        data: {
+
+            labels:
+                totalLabels,
+
+
+            datasets: [{
+
+                label:
+                    "Total Streams",
+
+
+                data:
+                    totalValues,
+
+
+                borderRadius:
+                    8,
+
+
+                borderSkipped:
+                    false
+
+            }]
+
+        },
+
+
+        options: {
+
+            responsive:
+                true,
+
+
+            maintainAspectRatio:
+                false,
+
+
+            indexAxis:
+                "y",
+
+
+            plugins: {
+
+                legend: {
+
+                    display:
+                        false
+
+                },
+
+
+                tooltip: {
+
+                    callbacks: {
+
+                        label:
+                            function(context) {
+
+                                return (
+                                    context.raw
+                                    .toLocaleString(
+                                        "id-ID"
+                                    )
+                                    + " total streams"
+                                );
+
+                            }
+
+                    }
+
+                }
+
+            },
+
+
+            scales: {
+
+                x: {
+
+                    beginAtZero:
+                        true,
+
+
+                    ticks: {
+
+                        callback:
+                            function(value) {
+
+                                return value
+                                    .toLocaleString(
+                                        "id-ID"
+                                    );
+
+                            }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+);
+
+
+</script>
+
+
+</body>
+
+</html>
